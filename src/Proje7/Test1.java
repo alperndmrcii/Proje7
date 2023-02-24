@@ -96,8 +96,10 @@ public class Test1 extends BaseDriver {
         name.sendKeys("sibel");
         MyFunc.Bekle(1);
 
-        WebElement company=driver.findElement(By.xpath("//*[@id='Company']"));
-        company.sendKeys("example");
+        String company = RandomString.make(10);
+        WebElement companyName = driver.findElement(By.xpath("//*[@id='Company']"));
+        companyName.sendKeys(company);
+
         MyFunc.Bekle(1);
 
         WebElement address = driver.findElement(By.xpath("//*[@id='Address']"));
@@ -113,11 +115,23 @@ public class Test1 extends BaseDriver {
         MyFunc.Bekle(1);
 
         WebElement email=driver.findElement(By.xpath("//*[@id='Email']"));
-        email.sendKeys("sibell@mailmail.com");
+        String rndmmail=RandomString.make(8);
+        email.sendKeys(rndmmail+"@gmail.com");
         MyFunc.Bekle(1);
 
         WebElement createbutton=driver.findElement(By.xpath("//*[@value='Create']"));
         createbutton.click();
+        MyFunc.Bekle(1);
+
+        WebElement searching=driver.findElement(By.xpath("//*[@id='searching']"));
+        searching.sendKeys(rndmmail+"@gmail.com");
+
+        WebElement serachingbutton=driver.findElement(By.xpath("//*[@value='Search']"));
+        serachingbutton.click();
+
+        WebElement company1 = driver.findElement(By.xpath("//*[@class='table-primary']/following-sibling::tr/td[2]"));
+        Assert.assertTrue("Company bulunamdi", company1.getText().equals(company));
+
     }
 }
 
