@@ -9,7 +9,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import java.sql.Driver;
 
 public class proje extends BaseDriver {
-    public static void main(String[] args) {
+   @Test public void Test1()
+   {
         driver.get("https://itera-qa.azurewebsites.net/");
 
     }
