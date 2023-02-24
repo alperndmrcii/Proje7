@@ -117,7 +117,7 @@ public class Test1 extends BaseDriver {
         MyFunc.Bekle(1);
 
         WebElement createbutton=driver.findElement(By.xpath("//*[@value='Create']"));
-        email.click();
+        createbutton.click();
     }
 }
 
