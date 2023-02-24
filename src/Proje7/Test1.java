@@ -2,14 +2,16 @@ package Proje7;
 
 import Utility.BaseDriver;
 import Utility.MyFunc;
+import javafx.scene.input.InputMethodTextRun;
+import net.bytebuddy.utility.RandomString;
+import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 
-import java.sql.Driver;
+import java.util.Random;
 
-public class proje extends BaseDriver {
+public class Test1 extends BaseDriver {
     @Test
     public void Test1() {
         driver.get("https://itera-qa.azurewebsites.net/");
@@ -28,7 +30,7 @@ public class proje extends BaseDriver {
         MyFunc.Bekle(2);
 
         WebElement epost=driver.findElement(By.xpath("//*[@id='E_post']"));
-        epost.sendKeys("alperndmrcii@asdasd.com"+Math.random()*100);
+        epost.sendKeys("alperndmrcii@asdasd.com");
         MyFunc.Bekle(2);
 
         WebElement mobile=driver.findElement(By.xpath("//*[@id='Mobile']"));
@@ -36,7 +38,8 @@ public class proje extends BaseDriver {
         MyFunc.Bekle(2);
 
         WebElement username=driver.findElement(By.xpath("//*[@id='Username']"));
-        username.sendKeys("alperndmrcii"+Math.random()*100);
+        String str= RandomString.make(8);
+        username.sendKeys(str);
         MyFunc.Bekle(2);
 
         WebElement password=driver.findElement(By.xpath("//*[@id='Password']"));
@@ -51,6 +54,9 @@ public class proje extends BaseDriver {
         WebElement submitbutton=driver.findElement(By.cssSelector("[id='submit']"));
         submitbutton.click();
         MyFunc.Bekle(2);
+
+        WebElement successful = driver.findElement(By.xpath("//*[text() ='Registration Successful']"));
+        Assert.assertTrue("bulunamadı",successful.getText().equals("Registration Successful"));
 
 
         BekleKapat();
